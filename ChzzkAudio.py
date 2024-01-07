@@ -9,12 +9,14 @@ channelImageWidth = 120
 def get_stream_url(username='룩삼오피셜'):
     global content
     req_result = requests.get(f"https://api.chzzk.naver.com/service/v1/search/channels?keyword={username}")
-    channelId = req_result.json()['content']['data'][0]['channel']['channelId']
-    if channelId:
-        content = requests.get(f"https://api.chzzk.naver.com/service/v2/channels/{channelId}/live-detail").json()['content']
-        if content:
-            return True
-    return False
+    try:
+        channelId = req_result.json()['content']['data'][0]['channel']['channelId']
+        if channelId:
+            content = requests.get(f"https://api.chzzk.naver.com/service/v2/channels/{channelId}/live-detail").json()['content']
+            return content
+    except:
+        st.error(f'{username}을 찾지 못했습니다.')
+        return False
 
 st.title("Chzzk Audio Finder")
 username = st.text_input("Enter Chzzk username:", value='룩삼오피셜', placeholder='치지직 닉네임')
