@@ -32,7 +32,8 @@ if username:
     try:
         title, stream_url_low, stream_url_high = get_stream_url(username)
         if stream_url_low and stream_url_high:
-            st.success(f"Stream found\n제목: {title}\n카테고리: {liveCategoryValue}({liveCategory})")
+            st.success(f"Stream found")
+            st.write(f"제목: {title}\n카테고리: {liveCategoryValue}({liveCategory})")
             st.write(f'Low(AAC 64kbps): {stream_url_low}')
             st.write(f'High(AAC 192kbps): {stream_url_high}')
             st.write("둘 중 하나를 복사하여 플레이어(VLC, 팟플레이어 등)로 재생하세요.")
