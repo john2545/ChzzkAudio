@@ -4,7 +4,7 @@ import m3u8
 import json
 live_status, real_username, liveCategoryValue, liveCategory, userAdultStatus = None, None, None, None, None
 def get_stream_url(username='룩삼오피셜'):
-    global real_username,liveCategoryValue, liveCategory, live_status
+    global real_username,liveCategoryValue, liveCategory, live_status, userAdultStatus
     req_result = requests.get(f"https://api.chzzk.naver.com/service/v1/search/channels?keyword={username}")
     channelId = req_result.json()['content']['data'][0]['channel']['channelId']
     if channelId:
