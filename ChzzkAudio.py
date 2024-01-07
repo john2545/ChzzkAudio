@@ -50,8 +50,6 @@ if username:
                 status_message = 'close'
                 st.error(f'\'{real_username}\'은(는) 방송 중이 아닙니다.')
                 st.image(content['channel']['channelImageUrl'], width = channelImageWidth)
-        else:
-            st.error(f'{username}을 찾지 못했습니다.')
     except Exception as e:
         st.write(e)
 
