@@ -21,9 +21,9 @@ def get_stream_url(username='룩삼오피셜'):
             return title, playlists.media[1].base_uri+playlists.media[1].uri, playlists.media[0].base_uri+playlists.media[0].uri
         else:
             status_message = 'close'
-            st.write(f'\'{real_username}\'은(는) 방송 중이 아닙니다.')
+            st.error(f'\'{real_username}\'은(는) 방송 중이 아닙니다.')
     else:
-        st.write(f'{username}을 찾지 못했습니다.')
+        st.error(f'{username}을 찾지 못했습니다.')
 
 st.title("Audio Finder")
 username = st.text_input("Enter Chzzk username:", value='룩삼오피셜', placeholder='치지직 닉네임')
