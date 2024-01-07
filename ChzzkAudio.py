@@ -41,7 +41,7 @@ if username:
                 st.write(f'Low(AAC 64kbps): {stream_url_low}')
                 st.write(f'High(AAC 192kbps): {stream_url_high}')
                 st.write("둘 중 하나를 복사하여 플레이어(VLC, 팟플레이어 등)로 재생하세요.")
-            else if userAdultStatus == "NOT_LOGIN_USER":
+            elif userAdultStatus == "NOT_LOGIN_USER":
                 st.write(f"닉네임: {real_username}")
                 st.write(f"제목: {title}")
                 st.write(f"카테고리: {liveCategoryValue}({liveCategory})")
