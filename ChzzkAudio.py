@@ -48,5 +48,7 @@ if username:
     try:
         if live_status == "OPEN" and userAdultStatus == "NOT_LOGIN_USER":
             st.write("성인인증이 필요한 방송입니다. 오디오 주소를 받아올 수 없습니다.")
+    except:
+        pass
 else:
     print("닉네임 입력 대기 중")
