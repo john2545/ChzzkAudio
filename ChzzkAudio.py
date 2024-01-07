@@ -2,9 +2,9 @@ import streamlit as st
 import requests
 import m3u8
 import json
-real_username, liveCategoryValue, liveCategory = None, None, None
+real_username, liveCategoryValue, liveCategory, userAdultStatus, live_status = None, None, None, None, None
 def get_stream_url(username='룩삼오피셜'):
-    global real_username,liveCategoryValue, liveCategory
+    global real_username,liveCategoryValue, liveCategory, userAdultStatus, live_status
     req_result = requests.get(f"https://api.chzzk.naver.com/service/v1/search/channels?keyword={username}")
     channelId = req_result.json()['content']['data'][0]['channel']['channelId']
     if channelId:
@@ -14,6 +14,7 @@ def get_stream_url(username='룩삼오피셜'):
         liveCategoryValue = content['liveCategoryValue']
         liveCategory = content['liveCategory']
         live_status = content['status']
+        userAdultStatus = content["userAdultStatus"]
         if live_status == "OPEN":
             status_message = 'open'
             video_m3u8 = json.loads(content['livePlaybackJson'])['media'][0]['path']
@@ -44,5 +45,8 @@ if username:
             st.write(status_message)
     except:
         pass
+    try:
+        if live_status == "OPEN" and userAdultStatus == "NOT_LOGIN_USER":
+            st.write("성인인증이 필요한 방송입니다. 오디오 주소를 받아올 수 없습니다.")
 else:
     print("닉네임 입력 대기 중")
