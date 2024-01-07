@@ -47,7 +47,10 @@ if username:
         pass
     try:
         if live_status == "OPEN" and userAdultStatus == "NOT_LOGIN_USER":
-            st.write("성인인증이 필요한 방송입니다. 오디오 주소를 받아올 수 없습니다.")
+            st.error("성인인증이 필요한 방송입니다. 오디오 주소를 받아올 수 없습니다.")
+            st.write(f"닉네임: {real_username}")
+            st.write(f"제목: {title}")
+            st.write(f"카테고리: {liveCategoryValue}({liveCategory})")
     except:
         pass
 else:
