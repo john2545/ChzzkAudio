@@ -33,19 +33,20 @@ if username:
             
             if live_status == "OPEN":
                 status_message = 'open'
-                video_m3u8 = json.loads(content['livePlaybackJson'])['media'][0]['path']
-                playlists = m3u8.load(video_m3u8)
-                stream_url_low = playlists.media[1].base_uri + playlists.media[1].uri
-                stream_url_high = playlists.media[0].base_uri + playlists.media[0].uri
-                
-                st.success(f"Stream found")
-                st.image(content['channel']['channelImageUrl'], width = channelImageWidth)
-                st.write(f"닉네임: {real_username}")
-                st.write(f"제목: {title}")
-                st.write(f"카테고리: {liveCategoryValue}({liveCategory})")
-                st.write(f'Low(AAC 64kbps): {stream_url_low}')
-                st.write(f'High(AAC 192kbps): {stream_url_high}')
-                st.write("둘 중 하나를 복사하여 플레이어(VLC, 팟플레이어 등)로 재생하세요.")
+                if content['livePlaybackJson']:
+                    video_m3u8 = json.loads(content['livePlaybackJson'])['media'][0]['path']
+                    playlists = m3u8.load(video_m3u8)
+                    stream_url_low = playlists.media[1].base_uri + playlists.media[1].uri
+                    stream_url_high = playlists.media[0].base_uri + playlists.media[0].uri
+                    
+                    st.success(f"Stream found")
+                    st.image(content['channel']['channelImageUrl'], width = channelImageWidth)
+                    st.write(f"닉네임: {real_username}")
+                    st.write(f"제목: {title}")
+                    st.write(f"카테고리: {liveCategoryValue}({liveCategory})")
+                    st.write(f'Low(AAC 64kbps): {stream_url_low}')
+                    st.write(f'High(AAC 192kbps): {stream_url_high}')
+                    st.write("둘 중 하나를 복사하여 플레이어(VLC, 팟플레이어 등)로 재생하세요.")
             else:
                 status_message = 'close'
                 st.error(f'\'{real_username}\'은(는) 방송 중이 아닙니다.')
