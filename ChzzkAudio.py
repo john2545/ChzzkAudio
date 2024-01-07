@@ -9,7 +9,7 @@ def get_stream_url(username='룩삼오피셜'):
     channelId = req_result.json()['content']['data'][0]['channel']['channelId']
     if channelId:
         content = requests.get(f"https://api.chzzk.naver.com/service/v2/channels/{channelId}/live-detail").json()['content']
-        real_username = content['channelName']
+        real_username = content['channel']['channelName']
         live_status = content['status']
         if live_status == "OPEN":
             status_message = 'open'
