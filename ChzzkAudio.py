@@ -31,5 +31,7 @@ if username:
             st.write("둘 중 하나를 복사하여 플레이어(VLC, 팟플레이어 등)로 재생하세요.")
         else:
             st.error("Stream not found.")
+    except:
+        pass
 else:
-    st.write("닉네임 입력")
+    print("닉네임 입력 대기 중")
