@@ -3,7 +3,8 @@ import requests
 import m3u8
 import json
 
-content = None  # global variable
+content = None
+channelImageWidth = 120
 
 def get_stream_url(username='룩삼오피셜'):
     global content
@@ -36,7 +37,7 @@ if username:
                 stream_url_high = playlists.media[0].base_uri + playlists.media[0].uri
                 
                 st.success(f"Stream found")
-                st.image(content['channel']['channelImageUrl'], width = 320)
+                st.image(content['channel']['channelImageUrl'], width = channelImageWidth)
                 st.write(f"닉네임: {real_username}")
                 st.write(f"제목: {title}")
                 st.write(f"카테고리: {liveCategoryValue}({liveCategory})")
@@ -45,6 +46,7 @@ if username:
                 st.write("둘 중 하나를 복사하여 플레이어(VLC, 팟플레이어 등)로 재생하세요.")
             else:
                 status_message = 'close'
+                st.image(content['channel']['channelImageUrl'], width = channelImageWidth)
                 st.error(f'\'{real_username}\'은(는) 방송 중이 아닙니다.')
         else:
             st.error(f'{username}을 찾지 못했습니다.')
@@ -54,7 +56,7 @@ if username:
     try:
         if content and live_status == "OPEN" and userAdultStatus == "NOT_LOGIN_USER":
             st.error("성인인증이 필요한 방송입니다. 오디오 주소를 받아올 수 없습니다.")
-            st.image(content['channel']['channelImageUrl'], width = 320)
+            st.image(content['channel']['channelImageUrl'], width = channelImageWidth)
             st.write(f"닉네임: {real_username}")
             st.write(f"제목: {title}")
             st.write(f"카테고리: {liveCategoryValue}({liveCategory})")
