@@ -36,7 +36,7 @@ if username:
                 stream_url_high = playlists.media[0].base_uri + playlists.media[0].uri
                 
                 st.success(f"Stream found")
-                st.image(content['channel']['channelImageUrl'])
+                st.image(content['channel']['channelImageUrl'], width = 320)
                 st.write(f"닉네임: {real_username}")
                 st.write(f"제목: {title}")
                 st.write(f"카테고리: {liveCategoryValue}({liveCategory})")
@@ -54,7 +54,7 @@ if username:
     try:
         if content and live_status == "OPEN" and userAdultStatus == "NOT_LOGIN_USER":
             st.error("성인인증이 필요한 방송입니다. 오디오 주소를 받아올 수 없습니다.")
-            st.image(content['channel']['channelImageUrl'])
+            st.image(content['channel']['channelImageUrl'], width = 320)
             st.write(f"닉네임: {real_username}")
             st.write(f"제목: {title}")
             st.write(f"카테고리: {liveCategoryValue}({liveCategory})")
