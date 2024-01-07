@@ -15,7 +15,6 @@ def get_stream_url(username='룩삼오피셜'):
             playlists = m3u8.load(video_m3u8)
             return playlists.media[1].base_uri+playlists.media[1].uri, playlists.media[0].base_uri+playlists.media[0].uri
         else:
-            
             st.write(f'{real_username}은 방송 중이 아닙니다.')
     else:
         st.write(f'{username}을 찾지 못했습니다.')
