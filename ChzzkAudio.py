@@ -14,9 +14,9 @@ def get_stream_url(username='룩삼오피셜'):
             playlists = m3u8.load(video_m3u8)
             return playlists.media[1].base_uri+playlists.media[1].uri, playlists.media[0].base_uri+playlists.media[0].uri
         else:
-            print(f'{username}은 방송 중이 아닙니다.')
+            st.write(f'{username}은 방송 중이 아닙니다.')
     else:
-        print(f'{username}을 찾지 못했습니다.')
+        st.write(f'{username}을 찾지 못했습니다.')
 
 st.title("Audio Finder")
 username = st.text_input("Enter Chzzk username:", value='룩삼오피셜', placeholder='치지직 닉네임')
@@ -29,5 +29,5 @@ if username:
         st.write(f'Low(AAC 64kbps): {stream_url_low}')
         st.write(f'High(AAC 192kbps): {stream_url_high}')
         st.write("둘 중 하나를 복사하여 플레이어(VLC, 팟플레이어 등)로 재생하세요.")
-    else:
-        st.error("Stream not found.")
+    # else:
+    #     st.error("Stream not found.")
