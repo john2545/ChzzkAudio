@@ -2,9 +2,9 @@ import streamlit as st
 import requests
 import m3u8
 import json
-status_message = None
+liveCategoryValue, liveCategory = None, None
 def get_stream_url(username='룩삼오피셜'):
-    global status_message
+    global liveCategoryValue, liveCategory
     req_result = requests.get(f"https://api.chzzk.naver.com/service/v1/search/channels?keyword={username}")
     channelId = req_result.json()['content']['data'][0]['channel']['channelId']
     if channelId:
