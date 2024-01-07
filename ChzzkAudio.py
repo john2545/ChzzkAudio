@@ -51,7 +51,7 @@ if username:
         else:
             st.error(f'{username}을 찾지 못했습니다.')
     except Exception as e:
-        print(e)
+        st.write(e)
 
     try:
         if content and live_status == "OPEN" and userAdultStatus == "NOT_LOGIN_USER":
@@ -61,6 +61,6 @@ if username:
             st.write(f"제목: {title}")
             st.write(f"카테고리: {liveCategoryValue}({liveCategory})")
     except Exception as e:
-        print(e)
+        st.write(e)
 else:
-    print("닉네임 입력 대기 중")
+    st.write("닉네임 입력 대기 중")
