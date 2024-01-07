@@ -49,7 +49,7 @@ if username:
             else:
                 st.error("Stream not found.")
                 st.write(status_message)
-    except Exception as e:
+        except Exception as e:
             st.error(f"An error occurred: {str(e)}")
 else:
     print("닉네임 입력 대기 중")
