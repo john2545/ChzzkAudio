@@ -16,9 +16,6 @@ def get_stream_url(username='룩삼오피셜'):
         live_status = content['status']
         userAdultStatus = content["userAdultStatus"]
         if live_status == "OPEN":
-            if  == "NOT_LOGIN_USER":
-                st.write("성인방송")
-        if live_status == "OPEN":
             status_message = 'open'
             video_m3u8 = json.loads(content['livePlaybackJson'])['media'][0]['path']
             playlists = m3u8.load(video_m3u8)
