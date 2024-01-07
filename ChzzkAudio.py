@@ -14,7 +14,7 @@ def get_stream_url(username='룩삼오피셜'):
             playlists = m3u8.load(video_m3u8)
             return playlists.media[1].base_uri+playlists.media[1].uri, playlists.media[0].base_uri+playlists.media[0].uri
         else:
-            st.write(f'{username}은 방송 중이 아닙니다.')
+            st.write(f'{content['channel_name]}은 방송 중이 아닙니다.')
     else:
         st.write(f'{username}을 찾지 못했습니다.')
 
@@ -25,7 +25,7 @@ if username:
     try:
         stream_url_low, stream_url_high = get_stream_url(username)
         if stream_url_low and stream_url_high:
-            st.success("Stream found")
+            st.success(f"Stream found: content")
             st.write(f'Low(AAC 64kbps): {stream_url_low}')
             st.write(f'High(AAC 192kbps): {stream_url_high}')
             st.write("둘 중 하나를 복사하여 플레이어(VLC, 팟플레이어 등)로 재생하세요.")
