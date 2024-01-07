@@ -41,15 +41,15 @@ if username:
                 st.write(f'Low(AAC 64kbps): {stream_url_low}')
                 st.write(f'High(AAC 192kbps): {stream_url_high}')
                 st.write("둘 중 하나를 복사하여 플레이어(VLC, 팟플레이어 등)로 재생하세요.")
-            elif userAdultStatus == "NOT_LOGIN_USER":
-                st.write(f"닉네임: {real_username}")
-                st.write(f"제목: {title}")
-                st.write(f"카테고리: {liveCategoryValue}({liveCategory})")
-                st.write("성인인증이 필요한 방송입니다. 오디오 주소를 가져올 수 없습니다.")
-            else:
-                st.error("Stream not found.")
-                st.write(status_message)
-        except Exception as e:
-            st.error(f"An error occurred: {str(e)}")
+        except:
+            pass
+        if userAdultStatus == "NOT_LOGIN_USER":
+            st.write(f"닉네임: {real_username}")
+            st.write(f"제목: {title}")
+            st.write(f"카테고리: {liveCategoryValue}({liveCategory})")
+            st.write("성인인증이 필요한 방송입니다. 오디오 주소를 가져올 수 없습니다.")
+        else:
+            st.error("Stream not found.")
+            st.write(status_message)
 else:
     print("닉네임 입력 대기 중")
