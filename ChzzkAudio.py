@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import m3u8
 import json
-liveCategoryValue, liveCategory = None, None
+real_username, liveCategoryValue, liveCategory = None, None, None
 def get_stream_url(username='룩삼오피셜'):
     global liveCategoryValue, liveCategory
     req_result = requests.get(f"https://api.chzzk.naver.com/service/v1/search/channels?keyword={username}")
@@ -33,6 +33,7 @@ if username:
         title, stream_url_low, stream_url_high = get_stream_url(username)
         if stream_url_low and stream_url_high:
             st.success(f"Stream found")
+            st.write(f"닉네임: {real_username}")
             st.write(f"제목: {title}")
             st.write(f"카테고리: {liveCategoryValue}({liveCategory})")
             st.write(f'Low(AAC 64kbps): {stream_url_low}')
