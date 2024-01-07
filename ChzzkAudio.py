@@ -8,13 +8,15 @@ def get_stream_url(username='룩삼오피셜'):
     channelId = req_result.json()['content']['data'][0]['channel']['channelId']
     if channelId:
         content = requests.get(f"https://api.chzzk.naver.com/service/v2/channels/{channelId}/live-detail").json()['content']
+        real_username = content['channelName']
         live_status = content['status']
         if live_status == "OPEN":
             video_m3u8 = json.loads(content['livePlaybackJson'])['media'][0]['path']
             playlists = m3u8.load(video_m3u8)
             return playlists.media[1].base_uri+playlists.media[1].uri, playlists.media[0].base_uri+playlists.media[0].uri
         else:
-            st.write(f'{content["channelName"]}은 방송 중이 아닙니다.')
+            
+            st.write(f'{real_username}은 방송 중이 아닙니다.')
     else:
         st.write(f'{username}을 찾지 못했습니다.')
 
