@@ -2,8 +2,9 @@ import streamlit as st
 import requests
 import m3u8
 import json
-
+status_message = None
 def get_stream_url(username='룩삼오피셜'):
+    global status_message
     req_result = requests.get(f"https://api.chzzk.naver.com/service/v1/search/channels?keyword={username}")
     channelId = req_result.json()['content']['data'][0]['channel']['channelId']
     if channelId:
@@ -11,12 +12,12 @@ def get_stream_url(username='룩삼오피셜'):
         real_username = content['channelName']
         live_status = content['status']
         if live_status == "OPEN":
-            print('open')
+            status_message = 'open'
             video_m3u8 = json.loads(content['livePlaybackJson'])['media'][0]['path']
             playlists = m3u8.load(video_m3u8)
             return playlists.media[1].base_uri+playlists.media[1].uri, playlists.media[0].base_uri+playlists.media[0].uri
         else:
-            print('close')
+            status_message = 'close'
             st.write(f'{real_username}은 방송 중이 아닙니다.')
     else:
         st.write(f'{username}을 찾지 못했습니다.')
@@ -34,6 +35,7 @@ if username:
             st.write("둘 중 하나를 복사하여 플레이어(VLC, 팟플레이어 등)로 재생하세요.")
         else:
             st.error("Stream not found.")
+            st.write(status_message)
     except:
         pass
 else:
