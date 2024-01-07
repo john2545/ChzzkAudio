@@ -46,8 +46,8 @@ if username:
                 st.write("둘 중 하나를 복사하여 플레이어(VLC, 팟플레이어 등)로 재생하세요.")
             else:
                 status_message = 'close'
-                st.image(content['channel']['channelImageUrl'], width = channelImageWidth)
                 st.error(f'\'{real_username}\'은(는) 방송 중이 아닙니다.')
+                st.image(content['channel']['channelImageUrl'], width = channelImageWidth)
         else:
             st.error(f'{username}을 찾지 못했습니다.')
     except Exception as e:
