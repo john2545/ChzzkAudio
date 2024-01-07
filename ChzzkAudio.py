@@ -25,7 +25,7 @@ def get_stream_url(username='룩삼오피셜'):
     else:
         st.error(f'{username}을 찾지 못했습니다.')
 
-st.title("Audio Finder")
+st.title("Chzzk Audio Finder")
 username = st.text_input("Enter Chzzk username:", value='룩삼오피셜', placeholder='치지직 닉네임')
 
 if username:
