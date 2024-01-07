@@ -24,7 +24,6 @@ username = st.text_input("Enter Chzzk username:", value='룩삼오피셜', place
 if username:
     try:
         stream_url_low, stream_url_high = get_stream_url(username)
-
     if stream_url_low and stream_url_high:
         st.success("Stream found")
         st.write(f'Low(AAC 64kbps): {stream_url_low}')
