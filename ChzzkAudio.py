@@ -42,6 +42,7 @@ if username:
                     st.success(f"Stream found")
                     st.image(content['channel']['channelImageUrl'], width = channelImageWidth)
                     st.write(f"닉네임: {real_username}")
+                    st.image(content['channel']['liveImageUrl'], width = channelImageWidth*3)
                     st.write(f"제목: {title}")
                     st.write(f"카테고리: {liveCategoryValue}({liveCategory})")
                     st.write(f'Low(AAC 64kbps): {stream_url_low}')
